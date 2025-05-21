@@ -1,21 +1,1053 @@
-<html>
- <head>
-  
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HP0L6M5DZH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASUS Product Security Advisory</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+      .montserrat {
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.8;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #4d4d4d;
+      }
 
-    gtag('config', 'G-HP0L6M5DZH');
-   </script>
-   <!-- Global site tag (gtag.js) - Google Analytics End -->
-  
-  <title>Home page</title>
- </head>
+      h1,
+      h2,
+      h3 {
+        color: #4d4d4d;
+      }
 
- <body>
-  Hello GA
- </body>
+      h1 {
+        font-size: 2em;
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      section {
+        margin: 20px auto;
+        max-width: 1100px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      p {
+        font-size: 1.1em;
+        color: #666;
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: #0056b3;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .main-menu ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background-color: #787878;
+        border-radius: 6px;
+        overflow: hidden;
+        justify-content: center;
+      }
+
+      .main-menu li {
+        flex: 1;
+        text-align: center;
+      }
+
+      .main-menu a {
+        display: block;
+        padding: 15px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .main-menu a:hover {
+        background-color: #333333;
+      }
+
+      .hof-tabs {
+        margin-top: 20px;
+      }
+      .tab-menu-wrapper {
+        position: relative;
+        overflow-x: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .tab-menu {
+        display: flex;
+        gap: 20px;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+        padding-bottom: 6px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+      }
+      .tab-menu::-webkit-scrollbar {
+        display: none;
+      }
+      .tab {
+        background: none;
+        border: none;
+        font-size: 18px;
+        padding: 10px 20px;
+        cursor: pointer;
+        color: #444;
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+      }
+      .tab.active {
+        font-weight: bold;
+        border-color: black;
+        color: black;
+      }
+      table.dataTable th.sorting:before,
+      table.dataTable th.sorting:after,
+      table.dataTable th.sorting_asc:after,
+      table.dataTable th.sorting_desc:before {
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+      .scroll-arrow {
+        position: absolute;
+        top: 0;
+        bottom: 20px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #666;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0)
+        );
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 2;
+      }
+      .left-arrow {
+        left: 0;
+      }
+      .right-arrow {
+        right: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0)
+        );
+      }
+      .tab-menu-wrapper:hover .scroll-arrow {
+        opacity: 1;
+      }
+      .tab-content ul {
+        margin-left: 20px;
+      }
+
+      #pgpKey {
+        background-color: #f1f1f1;
+        padding: 12px;
+        border-radius: 8px;
+        font-family: "Courier New", Courier, monospace;
+        color: #333;
+        word-wrap: break-word;
+      }
+
+      #pgpWrapper {
+        position: relative;
+        cursor: pointer;
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+        padding: 12px;
+        background: #f5f5f5;
+        margin-top: 10px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      #pgpWrapper:hover {
+        background-color: #e1f1ff;
+      }
+
+      #pgpHint {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        font-size: 13px;
+        color: #4d4d4d;
+      }
+
+      #pgpCopyNotice {
+        color: #28a745;
+        display: none;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+        margin-top: 20px;
+      }
+
+      .table-wrapper table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .table-wrapper th,
+      .table-wrapper td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-weight: 400 !important;
+      }
+
+      .table-wrapper th {
+        background-color: #4d4d4d;
+        color: white;
+      }
+
+      .table-wrapper tr:nth-child(even) {
+        background-color: #f7f7f7;
+      }
+
+      .table-wrapper tr:hover {
+        background-color: #e6f1ff;
+      }
+
+      .btn-rss {
+        padding: 10px 15px;
+        background-color: rgb(245 115 52);
+        color: white;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .btn-rss:hover {
+        background-color: #e55d00;
+        text-decoration: none;
+      }
+
+      h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        text-align: left;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.4;
+      }
+
+      section {
+        margin: 20px auto;
+        max-width: 1100px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: justify;
+      }
+
+      h2,
+      .year-header,
+      .table-wrapper h3 {
+        color: #4d4d4d;
+        text-align: left;
+        font-weight: bold;
+      }
+      h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        text-align: left;
+        color: #4d4d4d;
+      }
+
+      section {
+        margin: 20px auto;
+        max-width: 1100px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      [id^="block"] {
+        scroll-margin-top: 70px;
+      }
+
+      ul {
+        margin-left: 20px;
+      }
+
+      #pgpWrapper {
+        cursor: pointer;
+        border: 1px dashed #4d4d4d;
+        border-radius: 5px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        display: inline-block;
+        transition: background-color 0.3s;
+      }
+
+      #pgpWrapper:hover {
+        background-color: #e1f1ff;
+      }
+      /* Go to Top Button Styles */
+      #goTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        right: 10px;
+        background-color: #9a9ea1;
+        color: white;
+        border: none;
+        border-radius: 30%;
+        padding: 9px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.3s;
+        width: 40px;
+      }
+
+      #goTopBtn:hover {
+        background-color: #858789;
+        transform: scale(1.1);
+      }
+
+      #goTopBtn:focus {
+        outline: none;
+      }
+      .image-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin: 40px auto;
+        max-width: 960px;
+        padding: 0 20px;
+      }
+
+      .image-row img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .image-row img {
+        flex: 1;
+      }
+      .tab-menu-wrapper {
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-bottom: 10px;
+      }
+
+      .tab-menu {
+        display: flex;
+        gap: 40px;
+        padding: 0 10px;
+        border-bottom: 2px solid #ddd;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        width: 100%;
+      }
+
+      .tab-menu::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab {
+        background: none;
+        border: none;
+        font-size: 20px;
+        padding: 8px 0;
+        cursor: pointer;
+        color: #666;
+        font-weight: 400;
+        position: relative;
+        white-space: nowrap;
+      }
+
+      .tab.active {
+        color: #000;
+        font-weight: bold;
+      }
+
+      .tab.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 3px;
+        background-color: black;
+      }
+
+      .scroll-arrow {
+        position: absolute;
+        top: 0;
+        bottom: 15%;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #666;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0)
+        );
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 3;
+      }
+
+      .left-arrow {
+        left: 0;
+      }
+
+      .right-arrow {
+        right: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0)
+        );
+      }
+
+      .tab-menu-wrapper:hover .scroll-arrow {
+        opacity: 1;
+      }
+      /* 固定導覽列在最上方 */
+      nav.main-menu {
+        background-color: #f2f2f2;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .main-menu-container {
+        width: 100%;
+        max-width: 1236px;
+        margin: 0 auto;
+      }
+
+      .main-menu ul {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        width: 100%;
+      }
+
+      .main-menu li {
+        margin: 0 15px;
+      }
+
+      .main-menu a {
+        display: block;
+        padding: 14px 20px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 400;
+        font-size: 13px;
+        transition: background-color 0.3s;
+      }
+
+      .main-menu a:hover {
+        background-color: #a4a4a4;
+      }
+
+      @media (max-width: 768px) {
+        .image-row {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div style="background-color: #ffff">
+      <img
+        src="./headersimple.png"
+        alt="ASUS Header示意圖"
+        style="
+          width: 100%;
+          display: block;
+          max-width: 1236px;
+          margin: 0 auto;
+          background-color: #ffff;
+        "
+      />
+      <img
+        src="./banner.png"
+        alt="ASUS Header示意圖"
+        style="
+          width: 100%;
+          display: block;
+        "
+      />
+    </div>
+    <nav class="main-menu" style="background-color: #787878">
+      <div class="main-menu-container">
+        <ul>
+          <li><a href="#block1">ASUS PSIRT Participation</a></li>
+          <li><a href="#block2">Latest Security Updates</a></li>
+          <li><a href="#block3">Vulnerability Disclosure Policy</a></li>
+          <li><a href="#block4">Hall of Fame</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <h1>ASUS Product Security Advisory</h1>
+    <section>
+      <p>
+        We take every care to ensure that ASUS products are secure in order to
+        protect the information security privacy of our valued customers. We
+        constantly strive to improve our safeguards for security and personal
+        information in accordance with all applicable laws and regulations, and
+        we welcome all reports from our customers about product-related security
+        or privacy issues. ASUS strives to adhere to the principles of
+        Coordinated Vulnerability Disclosure (CVD) and actively collaborates
+        with partners to address potential vulnerabilities. Any information you
+        supply to ASUS will only be used to help resolve the security
+        vulnerabilities or issues you have reported. This process may include
+        contacting you for further relevant information. Once the vulnerability
+        report is confirmed, ASUS will notify the submitter as soon as possible
+        and provide timely updates on the handling status.
+      </p>
+    </section>
+
+    <div id="block1">
+      <section>
+        <h2>ASUS PSIRT Participation</h2>
+        <p>
+          ASUS places a high priority on the security of its products and
+          services. We understand that security is not a one-time effort, but a
+          continuous commitment. Therefore, ASUS continues to work closely with
+          industry partners, academic researchers, and cybersecurity experts,
+          adhering to the best practices outlined in ISO 29147:2018 and ISO
+          30111:2019 for vulnerability management and handling, while also
+          seeking new ways to enhance the security of our products. As a partner
+          in the CVE Numbering Authority (CNA) program, ASUS follows Coordinated
+          Vulnerability Disclosure (CVD) best practices to ensure timely and
+          responsible resolution of any reported security issues. Additionally,
+          as a member of the Forum of Incident Response and Security Teams
+          (FIRST), ASUS adheres to the PSIRT Framework to systematically address
+          potential security issues reported to ASUS. We encourage customers to
+          take critical security measures, such as following best security
+          practices, keeping products updated, and applying the latest firmware
+          and software patches to ensure that ASUS products always provide a
+          secure and reliable experience.
+        </p>
+        <div class="image-row">
+          <img src="./first-member-RGB.svg" alt="first-member-RGB" />
+          <img src="./cveLogo.svg" alt="cveLogo" />
+        </div>
+      </section>
+    </div>
+
+    <div id="block2">
+      <section id="updates">
+        <h2>Latest Security Updates</h2>
+
+        <div class="table-wrapper">
+          <table id="securityTable" class="display">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Affected Products</th>
+                <th>CVE</th>
+                <th>Published Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <a href="" target="_blank">Router AiCloud Vulnerability</a>
+                </td>
+                <td>Firmware</td>
+                <td>3.0.0.4_386、3.0.0.4_388、<br />3.0.0.6_102firmware</td>
+                <td>CVE-2024-12912,<br />CVE-2024-13062</td>
+                <td>01/02/2025</td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="" target="_blank"
+                    >ASUS Router Improper Input Validation</a
+                  >
+                </td>
+                <td>Security Bulletin</td>
+                <td>RT-AX55、RT-AX57</td>
+                <td>CVE-2024-11985</td>
+                <td>12/03/2024</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align: right; padding: 2% 0">
+          <a href="/rss/security-updates.xml" class="btn-rss"
+            >📡RSS Subscription</a
+          >
+        </div>
+        <span
+          >* If you need to review previous security updates, please visit:
+          <a href="https://www.asus.com/content/asus-product-security-advisory/"
+            >Here</a
+          ></span
+        >
+      </section>
+
+      <script>
+        $(document).ready(function () {
+          $("#securityTable").DataTable({
+            pageLength: 10,
+            lengthMenu: [10, 50, 100],
+            order: [[3, "desc"]],
+          });
+        });
+      </script>
+    </div>
+
+    <div id="block3">
+      <section>
+        <h2>Vulnerability Disclosure Policy</h2>
+        <h3>Responsible reporting guidelines:</h3>
+        <p>
+          ASUS appreciates all contributions from customers and the wider ASUS
+          community that help to improve the security of our products and
+          services. However, we kindly request that you act responsibly and bear
+          in mind the following when investigating or reporting any issues:
+        </p>
+        <ol>
+          <li>
+            Do not attempt to access or modify any ASUS services, systems,
+            products or software without authorization.
+          </li>
+          <li>
+            Do not disclose, or modify, destroy or misuse any data you may
+            discover.
+          </li>
+          <li>
+            All information given to or received from any party relating to the
+            reported issues must remain completely confidential.
+          </li>
+          <li>
+            Please do not engage in DoS attacks or any destructive testing that
+            may affect the confidentiality, integrity or availability of
+            information and systems.
+          </li>
+          <li>
+            Refrain from participating in social engineering or phishing
+            activities targeting customers or employees.
+          </li>
+          <li>
+            Requests for compensation regarding the time and resources spent
+            verifying vulnerabilities, or for discovered vulnerabilities, will
+            not be considered.
+          </li>
+        </ol>
+
+        <h3>Excluded Submission Types</h3>
+        <p>
+          We always prioritize security and encourage researchers to submit all
+          potential security issues. Each report will be carefully reviewed.
+          However, the following vulnerabilities (including but not limited to)
+          have a very low impact on the system or user security. ASUS will
+          handle and respond to submissions at its discretion based on the
+          circumstances.
+        </p>
+        <ul>
+          <li>
+            Outdated software versions that contain known vulnerabilities in
+            libraries (e.g., jQuery), leading to low-impact security risks
+          </li>
+          <li>
+            Inadequate rate limiting or the absence of CAPTCHA verification
+            mechanisms
+          </li>
+          <li>Missing or incomplete SPF, DMARC, or DKIM records</li>
+          <li>Cookies not properly configured with HTTPOnly or Secure flags</li>
+          <li>
+            Vulnerabilities that only affect outdated or unpatched browsers,
+            extensions, and other non-ASUS software
+          </li>
+          <li>
+            Automated tool reports based solely on tool-generated findings,
+            without further analysis of the vulnerabilities
+          </li>
+          <li>
+            Exposure of publicly accessible files or directories (e.g.,
+            robots.txt)
+          </li>
+          <li>
+            Low-risk issues related to clickjacking or UI elements (e.g.,
+            problems that are only exploitable through clickjacking)
+          </li>
+          <li>
+            Displaying stack traces on error pages instead of generic error
+            messages
+          </li>
+          <li>
+            Disclosure of technology or component information (e.g., PHP,
+            <a href="http://asp.net/" target="_blank">ASP.NET</a> usage)
+          </li>
+          <li>
+            Account or email enumeration with no significant impact on the
+            security of ASUS services or products
+          </li>
+          <li>
+            Absence of non-mandatory security headers, where the lack does not
+            lead to an exploitable vulnerability
+          </li>
+          <li>
+            Insufficient HTTP security settings, where the specific impact (such
+            as data leakage or functionality abuse) cannot be demonstrated
+          </li>
+          <li>
+            Low-risk CSRF issues (e.g., login, logout, or minor unauthenticated
+            cross-site request forgery vulnerabilities)
+          </li>
+        </ul>
+
+        <h3>How to report a security vulnerability or issue to ASUS</h3>
+        <p>
+          We welcome all reports related to security incidents concerning ASUS.
+          We invite you to contact us about such matters through our dedicated
+          web form:
+          <a href="https://www.asus.com/securityadvisory" target="_blank"
+            >https://www.asus.com/securityadvisory</a
+          >. By submitting a vulnerability report, you acknowledge and accept
+          ASUS's vulnerability submission policy.
+        </p>
+        <p>
+          To help us address your concerns quickly, please ensure you provide
+          the following information on the website.
+        </p>
+        <ol>
+          <li>
+            Your full name, and a means of contacting you. This can be an email
+            address, a phone number or any other preferred way we can use to get
+            in touch with you. If you provide a phone number, please include the
+            full country code, area code and extension number (if applicable).
+          </li>
+          <li>
+            Full and detailed information about the issue you wish to report.
+            This should include the following information, as applicable:
+            <ul>
+              <li>
+                The name of the ASUS service(s) or system(s) that your concern
+                relates to.
+              </li>
+              <li>
+                The name, description and version number of any affected ASUS
+                software products.
+              </li>
+              <li>
+                A full and detailed description of the problem or issue, along
+                with any background information that you believe is relevant,
+                and any other pertinent information that may help us reproduce
+                and/or resolve the issue. Finding Vulnerabilities (Problems)
+                Step-by-Step Instructions for Reproducing the Vulnerability
+                Technical Description of the Vulnerability (Including Proof of
+                Concept, if possible) Potential Impact of the Vulnerability Any
+                Other Information That Can Help Us Reproduce and Resolve the
+                Issue
+              </li>
+              <li>Methods for discovering vulnerabilities or issues</li>
+              <li>Detailed steps for reproducing the vulnerability</li>
+              <li>
+                Technical description of the vulnerability (if possible,
+                including proof of concept)
+              </li>
+              <li>Potential impact of the vulnerability</li>
+              <li>
+                Any additional information that could help us reproduce and
+                resolve the issue
+              </li>
+            </ul>
+          </li>
+        </ol>
+
+        <p>
+          We encourage you to use encrypted communication to protect the
+          confidentiality of your information. You can encrypt your report using
+          the PGP public key provided below:
+        </p>
+
+        <h3>PGP Public Key</h3>
+        <div
+          id="pgpWrapper"
+          onclick="copyPGPKey()"
+          style="
+            position: relative;
+            cursor: pointer;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+            padding: 12px;
+            background: #f9f9f9;
+            margin-bottom: 5px;
+          "
+        >
+          <pre id="pgpKey" style="margin: 0; white-space: pre-wrap">
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: PGP 1.01
+
+mQENBFoZ8......Xzr+3Fs=
+-----END PGP PUBLIC KEY BLOCK-----
+      </pre
+          >
+          <div
+            id="pgpHint"
+            style="
+              position: absolute;
+              top: 8px;
+              right: 12px;
+              font-size: 13px;
+              color: #999;
+            "
+          >
+            Copy 🔗
+          </div>
+        </div>
+        <p
+          id="pgpCopyNotice"
+          style="color: green; display: none; font-weight: bold"
+        >
+          ✔ Public key copied to clipboard！
+        </p>
+
+        <h3>What happens next?</h3>
+        <p>
+          Once we have resolved the reported issue(s), we will provide a
+          suitable solution to all affected customers. We will treat this with
+          the utmost priority and make the solution available as soon as it
+          practical to do so.
+        </p>
+        <p>
+          ASUS will also maintain a list of the latest software updates, along
+          with descriptions of the issues that have been fixed. Although we will
+          notify customers wherever possible, we also recommend that customers
+          visit this page regularly to make sure they are aware of the latest
+          updates.
+        </p>
+      </section>
+    </div>
+
+    <section id="block4">
+      <h2>Hall of Fame</h2>
+      <div class="hof-tabs">
+        <div class="tab-menu-wrapper">
+          <!-- <div class="scroll-arrow left-arrow">◀</div> -->
+          <div class="tab-menu">
+            <button class="tab active" data-year="y2025">2025</button>
+            <button class="tab" data-year="y2024">2024</button>
+            <button class="tab" data-year="y2023">2023</button>
+          </div>
+          <div class="scroll-arrow right-arrow">▶</div>
+        </div>
+        <div class="tab-content" id="y2025">
+          <h4>April</h4>
+          <ul>
+            <li>Alice Smith</li>
+            <li>CyberSecurity Team Z</li>
+          </ul>
+          <h4>January</h4>
+          <ul>
+            <li>Lin Wei-Cheng</li>
+          </ul>
+        </div>
+        <div class="tab-content" id="y2024" style="display: none">
+          <h4>August</h4>
+          <ul>
+            <li>John Doe</li>
+          </ul>
+          <h4>March</h4>
+          <ul>
+            <li>Red Hat Researchers</li>
+          </ul>
+        </div>
+        <div class="tab-content" id="y2023" style="display: none">
+          <h4>July</h4>
+          <ul>
+            <li>Jane Doe</li>
+            <li>White Hat Security Team</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Disclaimer</h2>
+      <p>
+        All aspects of the ASUS PSIRT (Product Security Incident Response Team)
+        processes and policies may be adjusted based on specific circumstances
+        and are subject to change without prior notice. We do not guarantee a
+        response to any particular issue or category of issues. The use of the
+        information in this document or any related links is at your own risk.
+      </p>
+    </section>
+
+    <section>
+      <h2>Privacy Policy</h2>
+      <p>
+        If you have any questions, concerns, feedback, or complaints regarding
+        our Privacy Policy, or if you believe that ASUS has not complied with
+        it, please do not hesitate contact us through
+        <a href="mailto:privacy@asus.com">privacy@asus.com</a>.
+      </p>
+    </section>
+
+    <!-- Go to Top Button -->
+    <button id="goTopBtn" title="Go to Top">↑</button>
+
+    <script>
+      document.querySelectorAll(".tab").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tab")
+            .forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+
+          const year = button.dataset.year;
+          document.querySelectorAll(".tab-content").forEach((section) => {
+            section.style.display = section.id === year ? "block" : "none";
+          });
+        });
+      });
+
+      const tabMenu = document.querySelector(".tab-menu");
+      document.querySelector(".left-arrow").addEventListener("click", () => {
+        tabMenu.scrollBy({ left: -100, behavior: "smooth" });
+      });
+      document.querySelector(".right-arrow").addEventListener("click", () => {
+        tabMenu.scrollBy({ left: 100, behavior: "smooth" });
+      });
+
+      function copyPGPKey() {
+        const keyText = document.getElementById("pgpKey").innerText;
+        navigator.clipboard
+          .writeText(keyText)
+          .then(() => {
+            const notice = document.getElementById("pgpCopyNotice");
+            const hint = document.getElementById("pgpHint");
+            notice.style.display = "block";
+            hint.textContent = "Successfully copied！✔";
+            setTimeout(() => {
+              notice.style.display = "none";
+              hint.textContent = "Click to copy 🔗";
+            }, 2000);
+          })
+          .catch((err) => {
+            alert("Copy failed. Please copy manually.");
+          });
+      }
+      function showYear(year) {
+        const yearLists = document.querySelectorAll(".year-list");
+        const yearTabs = document.querySelectorAll(".year-tab");
+
+        // Hide all year lists
+        yearLists.forEach((list) => {
+          list.style.display = "none";
+        });
+
+        // Remove active class from all tabs
+        yearTabs.forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Show the selected year list and add active class to the button
+        document.getElementById(year).style.display = "block";
+        const activeTab = document.querySelector(
+          `[onclick="showYear('${year}')"]`
+        );
+        activeTab.classList.add("active");
+      }
+      // Get the button
+      const goTopBtn = document.getElementById("goTopBtn");
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          goTopBtn.style.display = "block"; // Show the button
+        } else {
+          goTopBtn.style.display = "none"; // Hide the button
+        }
+      };
+
+      // When the user clicks the button, scroll to the top of the document
+      goTopBtn.onclick = function () {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+      };
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const goTopBtn = document.getElementById("goTopBtn");
+
+        window.onscroll = function () {
+          if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+          ) {
+            goTopBtn.style.display = "block";
+          } else {
+            goTopBtn.style.display = "none";
+          }
+        };
+
+        goTopBtn.onclick = function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+      });
+    </script>
+  </body>
 </html>
