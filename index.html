@@ -1,21 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ASUS Product Security Advisory</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <style>
+<head>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASUS Product Security Advisory</title>
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<style>
       .montserrat {
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
@@ -518,6 +513,9 @@
     overflow-y: auto;
     box-sizing: border-box;
   }
+  #rss-position {
+      text-align: right
+    }
 
 
       @media (max-width: 768px) {
@@ -525,44 +523,124 @@
           flex-direction: column;
         }
       }
-    </style>
-  </head>
-  <body>
-    <div style="background-color: #ffff">
-      <img
-        src="./headersimple.png"
-        alt="ASUS Header示意圖"
-        style="
-          width: 100%;
-          display: block;
-          max-width: 1236px;
-          margin: 0 auto;
-          background-color: #ffff;
-        "
-      />
-      <img
-        src="./banner.png"
-        alt="ASUS Header示意圖"
-        style="
-          width: 100%;
-          display: block;
-        "
-      />
-    </div>
-    <nav class="main-menu" style="background-color: #787878">
-      <div class="main-menu-container">
-        <ul>
-          <li><a href="#block1">ASUS PSIRT Participation</a></li>
-          <li><a href="#block2">Latest Security Updates</a></li>
-          <li><a href="#block3">Vulnerability Disclosure Policy</a></li>
-          <li><a href="#block4">Hall of Fame</a></li>
-        </ul>
-      </div>
-    </nav>
+    
+  .menu-toggle {
+    display: none;
+    background-color: #787878;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
 
-    <h1>ASUS Product Security Advisory</h1>
-    <section>
-      <p>
+  @media (max-width: 768px) {
+    section {
+    text-align: unset;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+
+    .main-menu ul {
+      display: none;
+      flex-direction: column;
+      background-color: #787878;
+    }
+
+    .main-menu ul.show {
+      display: flex;
+    }
+
+    .main-menu li {
+      margin: 0;
+    }
+
+    .main-menu a {
+      text-align: left;
+      padding: 12px 20px;
+    }
+
+    .dataTables_wrapper {
+      display: none;
+    }
+
+    .mobile-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-card {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 16px;
+      font-size: 14px;
+    }
+
+    .mobile-card p {
+      margin: 6px 0;
+    }
+
+    .mobile-card p strong {
+      display: inline-block;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 1.2em;
+    }
+    h2 {
+    font-size: 1em;
+    } 
+
+    h3,
+    p, 
+    li,
+    th,
+    span
+    {
+      font-size: 0.8em;
+    }
+    #rss-position {
+      text-align: left
+    }
+
+  }
+
+
+
+@media (min-width: 769px) {
+  #mobileSecurityCards {
+    display: none !important;
+  }
+}
+</style>
+</head>
+<body>
+<div style="background-color: #ffff">
+<picture>
+<source media="(max-width: 768px)" srcset="./banner-mb.png"/>
+<img alt="ASUS Banner" src="./banner.png" style="width: 100%; display: block;"/>
+</picture>
+</div>
+<button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button><nav class="main-menu" style="background-color: #787878">
+<div class="main-menu-container">
+<ul>
+<li><a href="#block1">ASUS PSIRT Participation</a></li>
+<li><a href="#block2">Latest Security Updates</a></li>
+<li><a href="#block3">Vulnerability Disclosure Policy</a></li>
+<li><a href="#block4">Hall of Fame</a></li>
+</ul>
+</div>
+</nav>
+<h1>ASUS Product Security Advisory</h1>
+<section>
+<p>
         We take every care to ensure that ASUS products are secure in order to
         protect the information security privacy of our valued customers. We
         constantly strive to improve our safeguards for security and personal
@@ -577,12 +655,11 @@
         report is confirmed, ASUS will notify the submitter as soon as possible
         and provide timely updates on the handling status.
       </p>
-    </section>
-
-    <div id="block1">
-      <section>
-        <h2>ASUS PSIRT Participation</h2>
-        <p>
+</section>
+<div id="block1">
+<section>
+<h2>ASUS PSIRT Participation</h2>
+<p>
           ASUS places a high priority on the security of its products and
           services. We understand that security is not a one-time effort, but a
           continuous commitment. Therefore, ASUS continues to work closely with
@@ -601,63 +678,57 @@
           and software patches to ensure that ASUS products always provide a
           secure and reliable experience.
         </p>
-        <div class="image-row">
-          <img src="./first-member-RGB.svg" alt="first-member-RGB" />
-          <img src="./cveLogo.svg" alt="cveLogo" />
-        </div>
-      </section>
-    </div>
-
-    <div id="block2">
-      <section id="updates">
-        <h2>Latest Security Updates</h2>
-
-        <div class="table-wrapper">
-          <table id="securityTable" class="display">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Type</th>
-                <th>Affected Products</th>
-                <th>CVE</th>
-                <th>Published Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <a href="javascript:void(0);" onclick="openModal()">Router AiCloud Vulnerability</a>
-                </td>
-                <td>Firmware</td>
-                <td>3.0.0.4_386、3.0.0.4_388、<br />3.0.0.6_102firmware</td>
-                <td>CVE-2024-12912,<br />CVE-2024-13062</td>
-                <td>01/02/2025</td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="" target="_blank"
-                    >ASUS Router Improper Input Validation</a
-                  >
-                </td>
-                <td>Security Bulletin</td>
-                <td>RT-AX55、RT-AX57</td>
-                <td>CVE-2024-11985</td>
-                <td>12/03/2024</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="text-align: right; padding: 2% 0">
-          <a href="/rss/security-updates.xml" class="rss-btn">
-            <img src="rss icon.png" alt="RSS icon" class="rss-icon" />RSS Subscription</a>
-        </div>
-        <span
-          >* To review security updates from before 2025, please visit:
+<div class="image-row">
+<img alt="first-member-RGB" src="./first-member-RGB.svg"/>
+<img alt="cveLogo" src="./cveLogo.svg"/>
+</div>
+</section>
+</div>
+<div id="block2">
+<section id="updates">
+  <h2>Latest Security Updates</h2>
+<div class="mobile-cards" id="mobileSecurityCards"></div>
+<div class="table-wrapper">
+<table class="display" id="securityTable">
+<thead>
+<tr>
+<th>Title</th>
+<th>Type</th>
+<th>Affected Products</th>
+<th>CVE</th>
+<th>Published Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="javascript:void(0);" onclick="openModal()">Router AiCloud Vulnerability</a>
+</td>
+<td>Firmware</td>
+<td>3.0.0.4_386、3.0.0.4_388、<br/>3.0.0.6_102firmware</td>
+<td>CVE-2024-12912,<br/>CVE-2024-13062</td>
+<td>01/02/2025</td>
+</tr>
+<tr>
+<td>
+<a href="" target="_blank">ASUS Router Improper Input Validation</a>
+</td>
+<td>Security Bulletin</td>
+<td>RT-AX55、RT-AX57</td>
+<td>CVE-2024-11985</td>
+<td>12/03/2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="rss-position" style="padding: 2% 0;">
+<a class="rss-btn" href="/rss/security-updates.xml">
+<img alt="RSS icon" class="rss-icon" src="rss icon.png"/>RSS Subscription</a>
+</div>
+<span>* To review security updates from before 2025, please visit:
           <a href="https://www.asus.com/content/asus-product-security-advisory/">Here</a></span>
-      </section>
-
-      <script>
+</section>
+<script>
         $(document).ready(function () {
           $("#securityTable").DataTable({
             pageLength: 10,
@@ -666,49 +737,47 @@
           });
         });
       </script>
-    </div>
-
-    <div id="block3">
-      <section>
-        <h2>Vulnerability Disclosure Policy</h2>
-        <h3>Responsible reporting guidelines:</h3>
-        <p>
+</div>
+<div id="block3">
+<section>
+<h2>Vulnerability Disclosure Policy</h2>
+<h3>Responsible reporting guidelines:</h3>
+<p>
           ASUS appreciates all contributions from customers and the wider ASUS
           community that help to improve the security of our products and
           services. However, we kindly request that you act responsibly and bear
           in mind the following when investigating or reporting any issues:
         </p>
-        <ol>
-          <li>
+<ol>
+<li>
             Do not attempt to access or modify any ASUS services, systems,
             products or software without authorization.
           </li>
-          <li>
+<li>
             Do not disclose, or modify, destroy or misuse any data you may
             discover.
           </li>
-          <li>
+<li>
             All information given to or received from any party relating to the
             reported issues must remain completely confidential.
           </li>
-          <li>
+<li>
             Please do not engage in DoS attacks or any destructive testing that
             may affect the confidentiality, integrity or availability of
             information and systems.
           </li>
-          <li>
+<li>
             Refrain from participating in social engineering or phishing
             activities targeting customers or employees.
           </li>
-          <li>
+<li>
             Requests for compensation regarding the time and resources spent
             verifying vulnerabilities, or for discovered vulnerabilities, will
             not be considered.
           </li>
-        </ol>
-
-        <h3>Excluded Submission Types</h3>
-        <p>
+</ol>
+<h3>Excluded Submission Types</h3>
+<p>
           We always prioritize security and encourage researchers to submit all
           potential security issues. Each report will be carefully reviewed.
           However, the following vulnerabilities (including but not limited to)
@@ -716,91 +785,89 @@
           handle and respond to submissions at its discretion based on the
           circumstances.
         </p>
-        <ul>
-          <li>
+<ul>
+<li>
             Outdated software versions that contain known vulnerabilities in
             libraries (e.g., jQuery), leading to low-impact security risks
           </li>
-          <li>
+<li>
             Inadequate rate limiting or the absence of CAPTCHA verification
             mechanisms
           </li>
-          <li>Missing or incomplete SPF, DMARC, or DKIM records</li>
-          <li>Cookies not properly configured with HTTPOnly or Secure flags</li>
-          <li>
+<li>Missing or incomplete SPF, DMARC, or DKIM records</li>
+<li>Cookies not properly configured with HTTPOnly or Secure flags</li>
+<li>
             Vulnerabilities that only affect outdated or unpatched browsers,
             extensions, and other non-ASUS software
           </li>
-          <li>
+<li>
             Automated tool reports based solely on tool-generated findings,
             without further analysis of the vulnerabilities
           </li>
-          <li>
+<li>
             Exposure of publicly accessible files or directories (e.g.,
             robots.txt)
           </li>
-          <li>
+<li>
             Low-risk issues related to clickjacking or UI elements (e.g.,
             problems that are only exploitable through clickjacking)
           </li>
-          <li>
+<li>
             Displaying stack traces on error pages instead of generic error
             messages
           </li>
-          <li>
+<li>
             Disclosure of technology or component information (e.g., PHP,ASP.NET usage)
           </li>
-          <li>
+<li>
             Account or email enumeration with no significant impact on the
             security of ASUS services or products
           </li>
-          <li>
+<li>
             Absence of non-mandatory security headers, where the lack does not
             lead to an exploitable vulnerability
           </li>
-          <li>
+<li>
             Insufficient HTTP security settings, where the specific impact (such
             as data leakage or functionality abuse) cannot be demonstrated
           </li>
-          <li>
+<li>
             Low-risk CSRF issues (e.g., login, logout, or minor unauthenticated
             cross-site request forgery vulnerabilities)
           </li>
-        </ul>
-
-        <h3>How to report a security vulnerability or issue to ASUS</h3>
-        <p>
+</ul>
+<h3>How to report a security vulnerability or issue to ASUS</h3>
+<p>
           We welcome all reports related to security incidents concerning ASUS.
           We invite you to contact us about such matters through our dedicated
           web form:
-          <a href="https://www.asus.com/securityadvisory" target="_blank" style="color: #666;">https://www.asus.com/securityadvisory</a
-          >. By submitting a vulnerability report, you acknowledge and accept
+          <a href="https://www.asus.com/securityadvisory" style="color: #666;" target="_blank">https://www.asus.com/securityadvisory</a>. By submitting a vulnerability report, you acknowledge and accept
           ASUS's vulnerability submission policy.
         </p>
-        <p>
+<p>
           To help us address your concerns quickly, please ensure you provide
           the following information on the website.
         </p>
-        <ol>
-          <li>
+<ol>
+<li>
             Your full name, and a means of contacting you. This can be an email
             address, a phone number or any other preferred way we can use to get
             in touch with you. If you provide a phone number, please include the
             full country code, area code and extension number (if applicable).
           </li>
-          <li>
+<li>
             Full and detailed information about the issue you wish to report.
             This should include the following information, as applicable:
             <ul>
-              <li>
+<li>
                 The name of the ASUS service(s) or system(s) that your concern
                 relates to.
               </li>
-              <li>
+<li>
                 The name, description and version number of any affected ASUS
                 software products.
               </li>
-              <li>
+<li>
                 A full and detailed description of the problem or issue, along
                 with any background information that you believe is relevant,
                 and any other pertinent information that may help us reproduce
@@ -811,34 +878,32 @@
                 Other Information That Can Help Us Reproduce and Resolve the
                 Issue
               </li>
-              <li>Methods for discovering vulnerabilities or issues</li>
-              <li>Detailed steps for reproducing the vulnerability</li>
-              <li>
+<li>Methods for discovering vulnerabilities or issues</li>
+<li>Detailed steps for reproducing the vulnerability</li>
+<li>
                 Technical description of the vulnerability (if possible,
                 including proof of concept)
               </li>
-              <li>Potential impact of the vulnerability</li>
-              <li>
+<li>Potential impact of the vulnerability</li>
+<li>
                 Any additional information that could help us reproduce and
                 resolve the issue
               </li>
-            </ul>
-          </li>
-        </ol>
-
-        <p>
+</ul>
+</li>
+</ol>
+<p>
           We encourage you to use encrypted communication to protect the
           confidentiality of your information. You can encrypt your report using
           the PGP public key provided below:
         </p>
-
-        <h3>PGP Public Key</h3>
+<h3>PGP Public Key</h3>
 <div class="pgp-section">
-  <div class="pgp-actions">
-    <button class="pgp-btn" onclick="togglePGP()">Expand</button>
-    <button class="pgp-btn" id="copyBtn" onclick="copyPGP()">Click to copy 🔗</button>
-  </div>
-  <div id="pgpBox" class="pgp-content">
+<div class="pgp-actions">
+<button class="pgp-btn" onclick="togglePGP()">Expand</button>
+<button class="pgp-btn" id="copyBtn" onclick="copyPGP()">Click to copy 🔗</button>
+</div>
+<div class="pgp-content" id="pgpBox" style="; word-break: break-all; font-size: 12px; overflow-x: auto;">
 Comment: User-ID:	ASUS_Security <security@asus.com>
 Comment: Valid from:	2024/11/6 上午 10:53
 Comment: Valid until:	2025/11/6 下午 12:00
@@ -888,97 +953,91 @@ iZj6zRLQQT+e7gLXWHxSLYMLf5Hb2MupVp4U9w==
 =apel
 -----END PGP PUBLIC KEY BLOCK-----
 
-  </div>
-  <p id="pgpCopyNotice" style="color: green; display: none; font-weight: bold">
+  </security@asus.com></div>
+<p id="pgpCopyNotice" style="color: green; display: none; font-weight: bold">
     ✔ Public key copied to clipboard！
   </p>
 </div>
-
-        <h3>What happens next?</h3>
-        <p>
+<h3>What happens next?</h3>
+<p>
           Once we have resolved the reported issue(s), we will provide a
           suitable solution to all affected customers. We will treat this with
           the utmost priority and make the solution available as soon as it
           practical to do so.
         </p>
-        <p>
+<p>
           ASUS will also maintain a list of the latest software updates, along
           with descriptions of the issues that have been fixed. Although we will
           notify customers wherever possible, we also recommend that customers
           visit this page regularly to make sure they are aware of the latest
           updates.
         </p>
-      </section>
-    </div>
-
-    <section id="block4">
-      <h2>Hall of Fame</h2>
-      <div class="hof-tabs">
-        <div class="tab-menu-wrapper">
-          <!-- <div class="scroll-arrow left-arrow">◀</div> -->
-          <div class="tab-menu">
-            <button class="tab active" data-year="y2025">2025</button>
-            <button class="tab" data-year="y2024">2024</button>
-            <button class="tab" data-year="y2023">2023</button>
-          </div>
-          <div class="scroll-arrow right-arrow">▶</div>
-        </div>
-        <div class="tab-content" id="y2025">
-          <h4>April</h4>
-          <ul>
-            <li>Alice Smith</li>
-            <li>CyberSecurity Team Z</li>
-          </ul>
-          <h4>January</h4>
-          <ul>
-            <li>Lin Wei-Cheng</li>
-          </ul>
-        </div>
-        <div class="tab-content" id="y2024" style="display: none">
-          <h4>August</h4>
-          <ul>
-            <li>John Doe</li>
-          </ul>
-          <h4>March</h4>
-          <ul>
-            <li>Red Hat Researchers</li>
-          </ul>
-        </div>
-        <div class="tab-content" id="y2023" style="display: none">
-          <h4>July</h4>
-          <ul>
-            <li>Jane Doe</li>
-            <li>White Hat Security Team</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Disclaimer</h2>
-      <p>
+</section>
+</div>
+<section id="block4">
+<h2>Hall of Fame</h2>
+<div class="hof-tabs">
+<div class="tab-menu-wrapper">
+<!-- <div class="scroll-arrow left-arrow">◀</div> -->
+<div class="tab-menu">
+<button class="tab active" data-year="y2025">2025</button>
+<button class="tab" data-year="y2024">2024</button>
+<button class="tab" data-year="y2023">2023</button>
+</div>
+<div class="scroll-arrow right-arrow">▶</div>
+</div>
+<div class="tab-content" id="y2025">
+<h4>April</h4>
+<ul>
+<li>Alice Smith</li>
+<li>CyberSecurity Team Z</li>
+</ul>
+<h4>January</h4>
+<ul>
+<li>Lin Wei-Cheng</li>
+</ul>
+</div>
+<div class="tab-content" id="y2024" style="display: none">
+<h4>August</h4>
+<ul>
+<li>John Doe</li>
+</ul>
+<h4>March</h4>
+<ul>
+<li>Red Hat Researchers</li>
+</ul>
+</div>
+<div class="tab-content" id="y2023" style="display: none">
+<h4>July</h4>
+<ul>
+<li>Jane Doe</li>
+<li>White Hat Security Team</li>
+</ul>
+</div>
+</div>
+</section>
+<section>
+<h2>Disclaimer</h2>
+<p>
         All aspects of the ASUS PSIRT (Product Security Incident Response Team)
         processes and policies may be adjusted based on specific circumstances
         and are subject to change without prior notice. We do not guarantee a
         response to any particular issue or category of issues. The use of the
         information in this document or any related links is at your own risk.
       </p>
-    </section>
-
-    <section>
-      <h2>Privacy Policy</h2>
-      <p>
+</section>
+<section>
+<h2>Privacy Policy</h2>
+<p>
         If you have any questions, concerns, feedback, or complaints regarding
         our Privacy Policy, or if you believe that ASUS has not complied with
         it, please do not hesitate contact us through
         <a href="mailto:privacy@asus.com">privacy@asus.com</a>.
       </p>
-    </section>
-
-    <!-- Go to Top Button -->
-    <button id="goTopBtn" title="Go to Top">↑</button>
-
-    <script>
+</section>
+<!-- Go to Top Button -->
+<button id="goTopBtn" title="Go to Top">↑</button>
+<script>
       document.querySelectorAll(".tab").forEach((button) => {
         button.addEventListener("click", () => {
           document
@@ -1067,8 +1126,7 @@ function copyPGP() {
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
       };
     </script>
-
-    <script>
+<script>
       document.addEventListener("DOMContentLoaded", function () {
         const goTopBtn = document.getElementById("goTopBtn");
 
@@ -1088,90 +1146,79 @@ function copyPGP() {
         };
       });
     </script>
-  
 <!-- Modal Structure -->
 <div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); z-index:1000;">
-  <div id="modalContent" style="background:#fff; max-width:1000px; margin:100px auto; padding:20px; border-radius:8px; position:relative;">
-    <span onclick="closeModal()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:18px;">&times;</span>
-    <h2>Router AiCloud Vulnerability Details</h2>
-    <section>
-  <p>
+<div id="modalContent" style="background:#fff; max-width:1000px; margin:100px auto; padding:20px; border-radius:8px; position:relative;">
+<span onclick="closeModal()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:18px;">×</span>
+<h2>Router AiCloud Vulnerability Details</h2>
+<section>
+<p>
     An improper authentication control vulnerability exists in certain ASUS router firmware series.
     This vulnerability can be triggered by a crafted request, potentially leading to unauthorized execution of functions.
   </p>
-  <p>
+<p>
     We have released new firmware update for 3.0.0.4_382, 3.0.0.4_386, 3.0.0.4_388, 3.0.0.6_102 series.
   </p>
-
-  <p>
+<p>
     We advise you to check your equipment and security procedures regularly, as this will make you safer.
     We recommend following these steps:
   </p>
-  <ol>
-    <li>
+<ol>
+<li>
       Update your router with the newest firmware. We encourage you to do this when new firmware becomes available.
       You can find the newest firmware on the ASUS support page at
       <a href="https://www.asus.com/support/" target="_blank">https://www.asus.com/support/</a>
       or the relevant product page at
       <a href="https://www.asus.com/Networking/" target="_blank">https://www.asus.com/Networking/</a>.
     </li>
-    <li>
+<li>
       Use different passwords for your wireless network and router-administration page. Use passwords that have at least 10 characters,
       with a mix of capital letters, numbers and symbols. Do not use the same password for more than one device or service.
       Do not use passwords with consecutive numbers or letters, such as 1234567890, abcdefghij, or qwertyuiop.
     </li>
-  </ol>
-
-  <p>
+</ol>
+<p>
     If you are unable to update the firmware quickly or the router is
     <a href="#" style="color: #0073e6;">end-of-life</a>,
     please ensure that both your login and WiFi passwords are strong. It is recommended to (1) Disable AiCloud
     (2) disable any services that can be accessed from the internet, such as remote access from WAN, port forwarding,
     DDNS, VPN server, DMZ, port triggering, and FTP.
   </p>
-
-  <p>
-    For further help with router setup and an introduction to network security, please visit<br />
-    <a href="https://www.asus.com/support/FAQ/1039292" target="_blank">
-      How to update the firmware of your router to the latest version?<br />
+<p>
+    For further help with router setup and an introduction to network security, please visit<br/>
+<a href="https://www.asus.com/support/FAQ/1039292" target="_blank">
+      How to update the firmware of your router to the latest version?<br/>
       https://www.asus.com/support/FAQ/1039292
     </a>
-  </p>
-
-  <p><strong>Please update the firmware to the version released after February 2025.</strong></p>
-  <table style="border-collapse: collapse; width: 100%;">
-    <thead style="background-color: #f9f9f9;">
-      <tr>
-        <th style="border: 1px solid #ccc; padding: 8px;">Firmware</th>
-        <th style="border: 1px solid #ccc; padding: 8px;">CVE</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_382 series</td>
-        <td rowspan="4" style="border: 1px solid #ccc; padding: 8px;">CVE-2025-2492</td>
-        
-      </tr>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_386 series</td>
-        
-      </tr>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_388 series</td>
-        
-      </tr>
-      <tr>
-        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.6_102 series</td>
-        
-      </tr>
-    </tbody>
-  </table>
-  <p><b>Last Updated</b>: February 1, 2025 (GMT+8)</p>
+</p>
+<p><strong>Please update the firmware to the version released after February 2025.</strong></p>
+<table style="border-collapse: collapse; width: 100%;">
+<thead style="background-color: #f9f9f9;">
+<tr>
+<th style="border: 1px solid #ccc; padding: 8px;">Firmware</th>
+<th style="border: 1px solid #ccc; padding: 8px;">CVE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_382 series</td>
+<td rowspan="4" style="border: 1px solid #ccc; padding: 8px;">CVE-2025-2492</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_386 series</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_388 series</td>
+</tr>
+<tr>
+<td style="border: 1px solid #ccc; padding: 8px;">3.0.0.6_102 series</td>
+</tr>
+</tbody>
+</table>
+<p><b>Last Updated</b>: February 1, 2025 (GMT+8)</p>
 </section>
-
-  </div>
 </div>
-
+</div>
 <script>
 function openModal() {
   document.getElementById('modalOverlay').style.display = 'block';
@@ -1199,6 +1246,45 @@ window.addEventListener('click', function(event) {
   }
 });
 </script>
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector(".main-menu ul");
+    menu.classList.toggle("show");
+  }
 
+  function createMobileCards() {
+    if (window.innerWidth > 768) return;
+
+    const table = document.querySelector("#securityTable tbody");
+    const cards = document.getElementById("mobileSecurityCards");
+    if (!table || !cards) return;
+
+    table.querySelectorAll("tr").forEach(row => {
+      const cols = row.querySelectorAll("td");
+      if (cols.length !== 5) return;
+
+      const card = document.createElement("div");
+      card.className = "mobile-card";
+
+      const title = cols[0].innerHTML;
+      const type = cols[1].innerText;
+      const product = cols[2].innerHTML;
+      const cve = cols[3].innerHTML;
+      const date = cols[4].innerText;
+
+      card.innerHTML = `
+        <p><strong>Title:</strong> ${title}</p>
+        <p><strong>Type:</strong> ${type}</p>
+        <p><strong>Affected Products:</strong> ${product}</p>
+        <p><strong>CVE:</strong> ${cve}</p>
+        <p><strong>Published Date:</strong> ${date}</p>
+      `;
+
+      cards.appendChild(card);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", createMobileCards);
+</script>
 </body>
 </html>
