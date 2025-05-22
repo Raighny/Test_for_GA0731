@@ -178,45 +178,39 @@
         margin-left: 20px;
       }
 
-      #pgpKey {
-        background-color: #f1f1f1;
-        padding: 12px;
-        border-radius: 8px;
-        font-family: "Courier New", Courier, monospace;
-        color: #333;
-        word-wrap: break-word;
-      }
-
-      #pgpWrapper {
-        position: relative;
-        cursor: pointer;
-        border: 1px dashed #ccc;
-        border-radius: 5px;
-        padding: 12px;
-        background: #f5f5f5;
-        margin-top: 10px;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      #pgpWrapper:hover {
-        background-color: #e1f1ff;
-      }
-
-      #pgpHint {
-        position: absolute;
-        top: 10px;
-        right: 12px;
-        font-size: 13px;
-        color: #4d4d4d;
-      }
-
-      #pgpCopyNotice {
-        color: #28a745;
-        display: none;
-        font-weight: bold;
-        margin-top: 10px;
-      }
+     .pgp-section {
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    background: #f9f9f9;
+    margin: 20px 0;
+  }
+  .pgp-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .pgp-btn {
+    border: 1px solid #878c99;
+    background: white;
+    color: #767c8b;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .pgp-btn:hover {
+    background: #e6f0ff;
+  }
+  .pgp-content {
+    background: #f0f0f0;
+    padding: 16px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    display: none;
+  }
 
       .table-wrapper {
         overflow-x: auto;
@@ -251,20 +245,6 @@
         background-color: #e6f1ff;
       }
 
-      .btn-rss {
-        padding: 10px 15px;
-        background-color: rgb(245 115 52);
-        color: white;
-        border-radius: 8px;
-        font-weight: bold;
-        text-decoration: none;
-        transition: background-color 0.3s;
-      }
-
-      .btn-rss:hover {
-        background-color: #e55d00;
-        text-decoration: none;
-      }
 
       h2 {
         font-size: 1.6em;
@@ -367,7 +347,6 @@
         width: 100%;
         max-width: 400px;
         border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
 
       .image-row img {
@@ -500,6 +479,46 @@
       .main-menu a:hover {
         background-color: #a4a4a4;
       }
+      .rss-btn {
+  background: #eb7818;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rss-btn img.rss-icon {
+  width: 20px;
+  height: 20px;
+}
+  #modalOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+
+  #modalContent {
+    background: #fff;
+    max-width: 1000px;
+    width: 100%;
+    margin: 5vh auto;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
 
       @media (max-width: 768px) {
         .image-row {
@@ -607,7 +626,7 @@
             <tbody>
               <tr>
                 <td>
-                  <a href="" target="_blank">Router AiCloud Vulnerability</a>
+                  <a href="javascript:void(0);" onclick="openModal()">Router AiCloud Vulnerability</a>
                 </td>
                 <td>Firmware</td>
                 <td>3.0.0.4_386、3.0.0.4_388、<br />3.0.0.6_102firmware</td>
@@ -630,16 +649,12 @@
         </div>
 
         <div style="text-align: right; padding: 2% 0">
-          <a href="/rss/security-updates.xml" class="btn-rss"
-            >📡RSS Subscription</a
-          >
+          <a href="/rss/security-updates.xml" class="rss-btn">
+            <img src="rss icon.png" alt="RSS icon" class="rss-icon" />RSS Subscription</a>
         </div>
         <span
-          >* If you need to review previous security updates, please visit:
-          <a href="https://www.asus.com/content/asus-product-security-advisory/"
-            >Here</a
-          ></span
-        >
+          >* To review security updates from before 2025, please visit:
+          <a href="https://www.asus.com/content/asus-product-security-advisory/">Here</a></span>
       </section>
 
       <script>
@@ -733,8 +748,7 @@
             messages
           </li>
           <li>
-            Disclosure of technology or component information (e.g., PHP,
-            <a href="http://asp.net/" target="_blank">ASP.NET</a> usage)
+            Disclosure of technology or component information (e.g., PHP,ASP.NET usage)
           </li>
           <li>
             Account or email enumeration with no significant impact on the
@@ -759,8 +773,7 @@
           We welcome all reports related to security incidents concerning ASUS.
           We invite you to contact us about such matters through our dedicated
           web form:
-          <a href="https://www.asus.com/securityadvisory" target="_blank"
-            >https://www.asus.com/securityadvisory</a
+          <a href="https://www.asus.com/securityadvisory" target="_blank" style="color: #666;">https://www.asus.com/securityadvisory</a
           >. By submitting a vulnerability report, you acknowledge and accept
           ASUS's vulnerability submission policy.
         </p>
@@ -820,46 +833,66 @@
         </p>
 
         <h3>PGP Public Key</h3>
-        <div
-          id="pgpWrapper"
-          onclick="copyPGPKey()"
-          style="
-            position: relative;
-            cursor: pointer;
-            border: 1px dashed #ccc;
-            border-radius: 5px;
-            padding: 12px;
-            background: #f9f9f9;
-            margin-bottom: 5px;
-          "
-        >
-          <pre id="pgpKey" style="margin: 0; white-space: pre-wrap">
------BEGIN PGP PUBLIC KEY BLOCK-----
-Version: PGP 1.01
+<div class="pgp-section">
+  <div class="pgp-actions">
+    <button class="pgp-btn" onclick="togglePGP()">Expand</button>
+    <button class="pgp-btn" id="copyBtn" onclick="copyPGP()">Click to copy 🔗</button>
+  </div>
+  <div id="pgpBox" class="pgp-content">
+Comment: User-ID:	ASUS_Security <security@asus.com>
+Comment: Valid from:	2024/11/6 上午 10:53
+Comment: Valid until:	2025/11/6 下午 12:00
+Comment: Type:	3,072-bit RSA (secret key available)
+Comment: Usage:	Signing, Encryption, Certifying User-IDs
+Comment: Fingerprint:	B336802655EF3AD23767440C86474747C219DE2D
 
-mQENBFoZ8......Xzr+3Fs=
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+iZj6zRLQQT+e7gLXWHxSLYMLf5Hb2MupVp4U9w==
+=apel
 -----END PGP PUBLIC KEY BLOCK-----
-      </pre
-          >
-          <div
-            id="pgpHint"
-            style="
-              position: absolute;
-              top: 8px;
-              right: 12px;
-              font-size: 13px;
-              color: #999;
-            "
-          >
-            Copy 🔗
-          </div>
-        </div>
-        <p
-          id="pgpCopyNotice"
-          style="color: green; display: none; font-weight: bold"
-        >
-          ✔ Public key copied to clipboard！
-        </p>
+
+  </div>
+  <p id="pgpCopyNotice" style="color: green; display: none; font-weight: bold">
+    ✔ Public key copied to clipboard！
+  </p>
+</div>
 
         <h3>What happens next?</h3>
         <p>
@@ -968,24 +1001,30 @@ mQENBFoZ8......Xzr+3Fs=
         tabMenu.scrollBy({ left: 100, behavior: "smooth" });
       });
 
-      function copyPGPKey() {
-        const keyText = document.getElementById("pgpKey").innerText;
-        navigator.clipboard
-          .writeText(keyText)
-          .then(() => {
-            const notice = document.getElementById("pgpCopyNotice");
-            const hint = document.getElementById("pgpHint");
-            notice.style.display = "block";
-            hint.textContent = "Successfully copied！✔";
-            setTimeout(() => {
-              notice.style.display = "none";
-              hint.textContent = "Click to copy 🔗";
-            }, 2000);
-          })
-          .catch((err) => {
-            alert("Copy failed. Please copy manually.");
-          });
-      }
+      function togglePGP() {
+  const box = document.getElementById('pgpBox');
+  const btn = document.querySelector('.pgp-actions button');
+  const isOpen = box.style.display === 'block';
+  box.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'Expand' : 'Collapse';
+}
+
+function copyPGP() {
+  const text = document.getElementById('pgpBox').textContent;
+  const beginIndex = text.indexOf('-----BEGIN PGP PUBLIC KEY BLOCK-----');
+  const trimmed = text.slice(beginIndex);
+  navigator.clipboard.writeText(trimmed).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Successfully copied！✔';
+    document.getElementById('pgpCopyNotice').style.display = 'block';
+    setTimeout(() => {
+      btn.textContent = 'Click to copy 🔗';
+      document.getElementById('pgpCopyNotice').style.display = 'none';
+    }, 2000);
+  }, () => {
+    alert('Copy failed. Please copy manually.');
+  });
+}
       function showYear(year) {
         const yearLists = document.querySelectorAll(".year-list");
         const yearTabs = document.querySelectorAll(".year-tab");
@@ -1049,5 +1088,117 @@ mQENBFoZ8......Xzr+3Fs=
         };
       });
     </script>
-  </body>
+  
+<!-- Modal Structure -->
+<div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); z-index:1000;">
+  <div id="modalContent" style="background:#fff; max-width:1000px; margin:100px auto; padding:20px; border-radius:8px; position:relative;">
+    <span onclick="closeModal()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:18px;">&times;</span>
+    <h2>Router AiCloud Vulnerability Details</h2>
+    <section>
+  <p>
+    An improper authentication control vulnerability exists in certain ASUS router firmware series.
+    This vulnerability can be triggered by a crafted request, potentially leading to unauthorized execution of functions.
+  </p>
+  <p>
+    We have released new firmware update for 3.0.0.4_382, 3.0.0.4_386, 3.0.0.4_388, 3.0.0.6_102 series.
+  </p>
+
+  <p>
+    We advise you to check your equipment and security procedures regularly, as this will make you safer.
+    We recommend following these steps:
+  </p>
+  <ol>
+    <li>
+      Update your router with the newest firmware. We encourage you to do this when new firmware becomes available.
+      You can find the newest firmware on the ASUS support page at
+      <a href="https://www.asus.com/support/" target="_blank">https://www.asus.com/support/</a>
+      or the relevant product page at
+      <a href="https://www.asus.com/Networking/" target="_blank">https://www.asus.com/Networking/</a>.
+    </li>
+    <li>
+      Use different passwords for your wireless network and router-administration page. Use passwords that have at least 10 characters,
+      with a mix of capital letters, numbers and symbols. Do not use the same password for more than one device or service.
+      Do not use passwords with consecutive numbers or letters, such as 1234567890, abcdefghij, or qwertyuiop.
+    </li>
+  </ol>
+
+  <p>
+    If you are unable to update the firmware quickly or the router is
+    <a href="#" style="color: #0073e6;">end-of-life</a>,
+    please ensure that both your login and WiFi passwords are strong. It is recommended to (1) Disable AiCloud
+    (2) disable any services that can be accessed from the internet, such as remote access from WAN, port forwarding,
+    DDNS, VPN server, DMZ, port triggering, and FTP.
+  </p>
+
+  <p>
+    For further help with router setup and an introduction to network security, please visit<br />
+    <a href="https://www.asus.com/support/FAQ/1039292" target="_blank">
+      How to update the firmware of your router to the latest version?<br />
+      https://www.asus.com/support/FAQ/1039292
+    </a>
+  </p>
+
+  <p><strong>Please update the firmware to the version released after February 2025.</strong></p>
+  <table style="border-collapse: collapse; width: 100%;">
+    <thead style="background-color: #f9f9f9;">
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;">Firmware</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">CVE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_382 series</td>
+        <td rowspan="4" style="border: 1px solid #ccc; padding: 8px;">CVE-2025-2492</td>
+        
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_386 series</td>
+        
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.4_388 series</td>
+        
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">3.0.0.6_102 series</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <p><b>Last Updated</b>: February 1, 2025 (GMT+8)</p>
+</section>
+
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('modalOverlay').style.display = 'block';
+  document.addEventListener('keydown', escCloseHandler);
+  document.body.style.overflow = 'hidden'; // 禁止背景滾動
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').style.display = 'none';
+  document.removeEventListener('keydown', escCloseHandler);
+  document.body.style.overflow = ''; // 恢復背景滾動
+}
+
+function escCloseHandler(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+}
+
+// 點擊背景區域關閉視窗
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('modalOverlay');
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+</script>
+
+</body>
 </html>
